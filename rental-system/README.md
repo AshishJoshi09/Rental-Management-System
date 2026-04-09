@@ -1,6 +1,6 @@
 # 🏠 RentEase – Property Rental Management System
 
-Full-stack property rental platform built with **React + Node.js/Express + MySQL + Stripe**.
+Full-stack property rental platform built with **React + Node.js/Express + MySQL + Razorpay**.
 
 ---
 
@@ -132,7 +132,7 @@ App runs at **http://localhost:3000** | API at **http://localhost:5000**
 | Frontend  | React 18, React Router v6, Axios, React Toastify |
 | Backend   | Node.js, Express, JWT Auth, Joi Validation, Helmet |
 | Database  | MySQL 8 (mysql2 pooled connections) |
-| Payments  | Stripe (Payment Intents API) |
+| Payments  | Razorpay (Payment Intents API) |
 | Security  | bcrypt passwords, role-based middleware, rate limiting |
 
 ---
@@ -149,7 +149,7 @@ App runs at **http://localhost:3000** | API at **http://localhost:5000**
 
 ---
 
-## 💳 Stripe Test Cards
+## 💳 RazorpayTest Cards
 
 Use these in development:
 - Success: `4242 4242 4242 4242`
