@@ -132,7 +132,7 @@ App runs at **http://localhost:3000** | API at **http://localhost:5000**
 | Frontend  | React 18, React Router v6, Axios, React Toastify |
 | Backend   | Node.js, Express, JWT Auth, Joi Validation, Helmet |
 | Database  | MySQL 8 (mysql2 pooled connections) |
-| Payments  | Stripe (Payment Intents API) |
+| Payments  | Razorpay (Payment Intents API) |
 | Security  | bcrypt passwords, role-based middleware, rate limiting |
 
 ---
