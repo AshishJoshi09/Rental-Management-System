@@ -3,6 +3,16 @@ import { useNavigate } from "react-router-dom";
 import api from "../api";
 
 const TYPES = ["", "apartment", "house", "villa", "studio", "commercial"];
+const DEFAULT_IMAGES = [
+  "https://i.pinimg.com/736x/a4/d1/cf/a4d1cf062362d942b48ca94e07eaa714.jpg",
+  "https://images.unsplash.com/photo-1564078516393-cf04bd966897?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cm9vbXN8ZW58MHx8MHx8fDA%3D",
+  "https://i.pinimg.com/1200x/16/c6/44/16c644ae4c12c94da1eae1e5309a704d.jpg",
+  "https://i.pinimg.com/736x/5b/22/49/5b22497427f6080b0e2c36620ab70004.jpg",
+  "https://i.pinimg.com/736x/5f/08/39/5f08393aeb2a13a99c6eb685e470fc9c.jpg",
+  "https://i.pinimg.com/1200x/ec/8e/61/ec8e619b40b492bb8ef7145e8ae07d3a.jpg",
+];
+
+const getDefaultImage = (id) => DEFAULT_IMAGES[(id - 1) % DEFAULT_IMAGES.length];
 
 export default function Properties() {
   const navigate = useNavigate();
@@ -60,9 +70,17 @@ export default function Properties() {
         <div className="grid-3">
           {properties.map(p => {
             const imgs = typeof p.images === "string" ? JSON.parse(p.images || "[]") : p.images || [];
+            const mainImage = imgs[0] || getDefaultImage(p.id);
             return (
               <div key={p.id} className="property-card" onClick={() => navigate(`/properties/${p.id}`)}>
-                {imgs[0] ? <img src={imgs[0]} alt={p.title} /> : <div className="property-img-placeholder">🏠</div>}
+                <img src={mainImage} alt={p.title} />
+                {imgs.length > 1 && (
+                  <div className="property-card-gallery">
+                    {imgs.slice(1, 4).map((src, idx) => (
+                      <img key={idx} src={src} alt={`${p.title} ${idx + 2}`} className="property-card-thumb" />
+                    ))}
+                  </div>
+                )}
                 <div className="property-card-body">
                   <div className="property-card-title">{p.title}</div>
                   <div className="property-card-city">📍 {p.city}{p.state ? `, ${p.state}` : ""}</div>

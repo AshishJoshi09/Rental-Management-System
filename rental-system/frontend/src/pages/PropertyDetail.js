@@ -4,6 +4,17 @@ import { toast } from "react-toastify";
 import api from "../api";
 import { useAuth } from "../context/AuthContext";
 
+const DEFAULT_IMAGES = [
+  "https://images.pexels.com/photos/1350789/pexels-photo-1350789.jpeg?auto=compress&cs=tinysrgb&w=600",
+  "https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=600",
+  "https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=600",
+  "https://images.pexels.com/photos/313694/pexels-photo-313694.jpeg?auto=compress&cs=tinysrgb&w=600",
+  "https://images.pexels.com/photos/1029599/pexels-photo-1029599.jpeg?auto=compress&cs=tinysrgb&w=600",
+  "https://images.pexels.com/photos/1172064/pexels-photo-1172064.jpeg?auto=compress&cs=tinysrgb&w=600",
+];
+
+const getDefaultImage = (id) => DEFAULT_IMAGES[(id - 1) % DEFAULT_IMAGES.length];
+
 export default function PropertyDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -11,12 +22,19 @@ export default function PropertyDetail() {
   const [property, setProperty] = useState(null);
   const [reviews, setReviews] = useState([]);
   const [booking, setBooking] = useState({ start_date:"", end_date:"", notes:"" });
+  const [selectedImage, setSelectedImage] = useState("");
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     api.get(`/properties/${id}`).then(r => setProperty(r.data));
     api.get(`/reviews/${id}`).then(r => setReviews(r.data));
   }, [id]);
+
+  useEffect(() => {
+    if (!property) return;
+    const imageList = typeof property.images === "string" ? JSON.parse(property.images || "[]") : property.images || [];
+    setSelectedImage(imageList[0] || getDefaultImage(property.id));
+  }, [property]);
 
   const book = async () => {
     if (!isAuthenticated) { navigate("/login"); return; }
@@ -43,8 +61,21 @@ export default function PropertyDetail() {
 
       <div className="grid-2" style={{ gap:"32px", alignItems:"start" }}>
         <div>
-          {imgs[0] ? <img src={imgs[0]} alt={property.title} style={{ width:"100%", borderRadius:"14px", height:"280px", objectFit:"cover" }} />
-            : <div style={{ width:"100%", height:"280px", borderRadius:"14px", background:"linear-gradient(135deg,#6c5ce7,#a29bfe)", display:"flex", alignItems:"center", justifyContent:"center", fontSize:"72px" }}>🏠</div>}
+          <img src={selectedImage} alt={property.title} style={{ width:"100%", borderRadius:"14px", height:"280px", objectFit:"cover" }} />
+
+          {imgs.length > 1 && (
+            <div className="property-gallery" style={{ marginTop:"16px" }}>
+              {imgs.map((src, idx) => (
+                <img
+                  key={idx}
+                  src={src}
+                  alt={`${property.title} ${idx + 1}`}
+                  className={`property-gallery-thumb${src === selectedImage ? " active" : ""}`}
+                  onClick={() => setSelectedImage(src)}
+                />
+              ))}
+            </div>
+          )}
 
           <div className="card" style={{ marginTop:"20px" }}>
             <h2 style={{ marginBottom:"8px" }}>{property.title}</h2>
