@@ -149,7 +149,7 @@ App runs at **http://localhost:3000** | API at **http://localhost:5000**
 
 ---
 
-## 💳 Stripe Test Cards
+## 💳 RazorpayTest Cards
 
 Use these in development:
 - Success: `4242 4242 4242 4242`
