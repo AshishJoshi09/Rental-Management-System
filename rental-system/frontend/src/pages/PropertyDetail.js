@@ -5,12 +5,12 @@ import api from "../api";
 import { useAuth } from "../context/AuthContext";
 
 const DEFAULT_IMAGES = [
-  "https://images.pexels.com/photos/1350789/pexels-photo-1350789.jpeg?auto=compress&cs=tinysrgb&w=600",
-  "https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=600",
-  "https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=600",
-  "https://images.pexels.com/photos/313694/pexels-photo-313694.jpeg?auto=compress&cs=tinysrgb&w=600",
-  "https://images.pexels.com/photos/1029599/pexels-photo-1029599.jpeg?auto=compress&cs=tinysrgb&w=600",
-  "https://images.pexels.com/photos/1172064/pexels-photo-1172064.jpeg?auto=compress&cs=tinysrgb&w=600",
+  "https://i.pinimg.com/1200x/a3/75/60/a37560dae01a07d75bf99a4b714c1e25.jpg",
+  "https://i.pinimg.com/736x/4e/28/f8/4e28f810d2bf579c7b5aba737df55ee3.jpg",
+  "https://i.pinimg.com/1200x/1c/90/07/1c900769d5932b49e07bf766747e30df.jpg",
+  "https://i.pinimg.com/736x/7f/94/f2/7f94f261daf16d1314bb869354865e28.jpg",
+  "https://i.pinimg.com/736x/92/30/a2/9230a2962760b6cfa74e12c37275cc17.jpg",
+  "https://i.pinimg.com/1200x/5e/74/2d/5e742d653092a3b344740bd43f65a1df.jpg",
 ];
 
 const getDefaultImage = (id) => DEFAULT_IMAGES[(id - 1) % DEFAULT_IMAGES.length];

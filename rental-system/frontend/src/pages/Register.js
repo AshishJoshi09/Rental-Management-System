@@ -26,7 +26,17 @@ export default function Register() {
   };
 
   return (
-    <div style={{ minHeight:"100vh", display:"flex", alignItems:"center", justifyContent:"center", background:"linear-gradient(135deg,#6c5ce7,#a29bfe)" }}>
+    <div style={{ 
+      minHeight:"100vh", 
+      display:"flex", 
+      alignItems:"center", 
+      justifyContent:"center", 
+      backgroundImage:"linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url('https://i.pinimg.com/736x/8c/c8/ea/8cc8ea3675d04baacf8c22782c263e90.jpg')",
+      backgroundSize:"cover",
+      backgroundPosition:"center",
+      backgroundAttachment:"fixed",
+      backgroundRepeat:"no-repeat"
+    }}>
       <div className="card" style={{ width:"100%", maxWidth:"460px" }}>
         <h2 style={{ textAlign:"center", marginBottom:"28px", color:"#6c5ce7" }}>🏠 Create Account</h2>
         <form onSubmit={submit}>

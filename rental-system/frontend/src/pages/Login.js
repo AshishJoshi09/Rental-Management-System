@@ -27,7 +27,17 @@ export default function Login() {
   };
 
   return (
-    <div style={{ minHeight:"100vh", display:"flex", alignItems:"center", justifyContent:"center", background:"linear-gradient(135deg,#6c5ce7,#a29bfe)" }}>
+    <div style={{ 
+      minHeight:"100vh", 
+      display:"flex", 
+      alignItems:"center", 
+      justifyContent:"center", 
+      backgroundImage:"linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.3)), url('https://i.pinimg.com/736x/9b/0b/49/9b0b49fb3b357ea98f486bb2b44c8e2b.jpg')",
+      backgroundSize:"cover",
+      backgroundPosition:"center",
+      backgroundAttachment:"fixed",
+      backgroundRepeat:"no-repeat"
+    }}>
       <div className="card" style={{ width:"100%", maxWidth:"420px" }}>
         <h2 style={{ textAlign:"center", marginBottom:"28px", color:"#6c5ce7" }}>🏠 Welcome Back</h2>
         <form onSubmit={submit}>
