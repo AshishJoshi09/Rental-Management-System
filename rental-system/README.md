@@ -1,6 +1,6 @@
 # 🏠 RentEase – Property Rental Management System
 
-Full-stack property rental platform built with **React + Node.js/Express + MySQL + Stripe**.
+Full-stack property rental platform built with **React + Node.js/Express + MySQL + Razorpay**.
 
 ---
 
