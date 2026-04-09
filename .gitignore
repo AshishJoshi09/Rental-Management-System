@@ -1,0 +1,16 @@
+# Ignore dependency folders
+rental-system/backend/node_modules/
+rental-system/frontend/node_modules/
+
+# Ignore environment and secret files
+**/.env
+**/.env.*
+!.env.example
+
+# Ignore OS & editor files
+.DS_Store
+Thumbs.db
+*.log
+
+# Ignore build artifacts
+rental-system/frontend/build/
